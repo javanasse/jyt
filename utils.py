@@ -1,0 +1,1 @@
+YT_DLP_COMMAND = r'yt-dlp -x --embed-thumbnail --audio-format mp3 --embed-metadata --parse-metadata "artist:%(uploader)s" -o "%(uploader)s - %(title)s.%(ext)s"'
