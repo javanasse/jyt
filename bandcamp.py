@@ -1,3 +1,4 @@
+import logging
 import pathlib
 import subprocess
 
@@ -18,11 +19,10 @@ def download_album(url, dest):
     try:
         album_dest.mkdir()
     except FileExistsError:
-        proceed = input(f"\"{album_dest}\" already exists. Overwrite? (Y/N)")
+        proceed = input(f"\"{album_dest}\" already exists. Overwrite? (Y/N): ")
         if proceed.lower() == "y":
             album_dest.mkdir(exist_ok=True)
-        else:
-            exit()
+            logging.info(f"directory created: \"{album_dest.absolute()}\"")
     
     command = f"cd \"{album_dest}\"; {utils.YT_DLP_COMMAND} {url}"
     ret = subprocess.run(command, capture_output=True, shell=True)
