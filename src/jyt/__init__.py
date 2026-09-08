@@ -48,7 +48,9 @@ def main():
         ret = subprocess.run(command, capture_output=True, shell=True)
     # for all else
     else:
-        
+        logging.info(f"unknown net location for url: \"{args.url}\"")
+        command = f"cd \"{dest}\"; {utils.YT_DLP_COMMAND} {args.url}"
+        ret = subprocess.run(command, capture_output=True, shell=True)
     
         
 
