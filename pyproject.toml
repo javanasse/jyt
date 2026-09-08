@@ -1,11 +1,21 @@
 [project]
 name = "jyt"
 version = "0.1.0"
-description = "Add your description here"
+description = "Julian's Youtube/bandcamp mp3 download you-tility."
 readme = "README.md"
+authors = [
+    { name = "javanasse", email = "julian.vanasse@gmail.com" }
+]
 requires-python = ">=3.14"
 dependencies = [
     "beautifulsoup4>=4.15.0",
     "requests>=2.34.2",
     "yt-dlp>=2026.8.19",
 ]
+
+[project.scripts]
+jyt = "jyt:main"
+
+[build-system]
+requires = ["uv_build>=0.11.17,<0.12.0"]
+build-backend = "uv_build"
