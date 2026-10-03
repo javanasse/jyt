@@ -20,6 +20,9 @@ def download_album(url, dest):
     album_dest_dirname = f"{metadata[1]} - {metadata[0]}"
     album_dest_dirname = album_dest_dirname.replace(os.sep, "__")
     album_dest = dest / pathlib.Path(album_dest_dirname)
+    
+    command = f"cd \"{album_dest}\"; {utils.YT_DLP_COMMAND} {url}"
+    
     try:
         album_dest.mkdir()
     except FileExistsError:
@@ -27,8 +30,10 @@ def download_album(url, dest):
         if proceed.lower() == "y":
             album_dest.mkdir(exist_ok=True)
             logging.info(f"directory created: \"{album_dest.absolute()}\"")
+        else:
+            logging.info("dictory will not be overwritten.")
+            return
     
-    command = f"cd \"{album_dest}\"; {utils.YT_DLP_COMMAND} {url}"
     ret = subprocess.run(command, capture_output=True, shell=True)
     
 def download_discography(url, dest):
