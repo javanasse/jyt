@@ -19,7 +19,7 @@ logging.basicConfig(
     format='%(asctime)s [%(levelname)s] %(name)s (%(filename)s:%(lineno)d) - %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S'
 )
-logging.root.setLevel(logging.NOTSET)
+logging.root.setLevel(logging.INFO)
 
 __version__ = importlib.metadata.version("jyt")
 
