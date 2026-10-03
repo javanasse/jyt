@@ -2,6 +2,7 @@ __all__ = ['bandcamp', 'network', 'utils']
 
 import argparse
 import logging
+import importlib.metadata
 import pathlib
 import subprocess
 import urllib.parse
@@ -20,10 +21,16 @@ logging.basicConfig(
 )
 logging.root.setLevel(logging.NOTSET)
 
+__version__ = importlib.metadata.version("jyt")
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("url", help="URL for audio source")
     parser.add_argument("--dest", help="destination directory path", default=".")
+    parser.add_argument("-v", "--version",        
+        action="version",     
+        version=f"%(prog)s {__version__}" 
+    )
     args = parser.parse_args()
     
     url_parts = urllib.parse.urlsplit(args.url)
