@@ -35,7 +35,7 @@ def main():
         logging.info(f"bandcamp url found: \"{args.url}\"")
         # if url starts with album, then its an album
         if url_parts.path.startswith("/album"):
-            logging.info(f'bandcamp discography detected in url: \"{args.url}\"')
+            logging.info(f'bandcamp album detected in url: \"{args.url}\"')
             bandcamp.download_album(args.url, dest)
         # if url starts with music or has empty path, then its a discography
         elif url_parts.path.startswith("/music") or url_parts.path == "/":
